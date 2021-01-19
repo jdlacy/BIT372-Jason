@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "RoomDB Example"
+rootProject.name = "RoomDB"
