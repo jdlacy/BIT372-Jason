@@ -17,6 +17,6 @@ public class ConverterTest {
 
     @Test
     public void kg_conversion_isCorrect() {
-        assertEquals(45.359237, Converter.toKiloG(100), 0.000001);
+        assertEquals(45.359, Converter.toKiloG(100), 0.003);
     }
 }

@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
-        android:text="TextView"
+        android:text="kg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,12 +84,12 @@
 
     <Button
         android:id="@+id/convert_btn1"
-        android:layout_width="102dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="192dp"
+        android:layout_width="117dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="196dp"
         android:text="Convert"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.884"
+        app:layout_constraintHorizontal_bias="0.907"
         app:layout_constraintStart_toEndOf="@+id/kg_text"
         app:layout_constraintTop_toBottomOf="@+id/convert_btn" />
 

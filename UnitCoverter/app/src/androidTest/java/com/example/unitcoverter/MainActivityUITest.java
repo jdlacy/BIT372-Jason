@@ -48,6 +48,14 @@ public class MainActivityUITest {
 
     @Test
     public void can_enter_lbs() {
+        onView(withId(R.id.lbs_input)).perform(typeText("100"));
+        onView(withId(R.id.convert_btn1)).perform(click());
+        onView(withId(R.id.kg_text)).check(matches(withText("45.359 kg")));
+    }
 
+    @Test
+    public void should_not_enter_empty_lbs() {
+        onView(withId(R.id.convert_btn1)).perform(click());
+        onView(withId(R.id.kg_text)).check(matches(withText("kg")));
     }
 }
