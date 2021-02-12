@@ -60,7 +60,7 @@
         android:orientation="vertical" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/kg_title"
         android:layout_width="224dp"
         android:layout_height="35dp"
         android:layout_marginTop="128dp"
@@ -80,14 +80,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/kg_title" />
 
     <Button
         android:id="@+id/convert_btn1"
         android:layout_width="102dp"
         android:layout_height="44dp"
         android:layout_marginTop="192dp"
-        android:text="Button"
+        android:text="Convert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toEndOf="@+id/kg_text"
@@ -103,6 +103,6 @@
         app:layout_constraintEnd_toStartOf="@+id/convert_btn1"
         app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/kg_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
