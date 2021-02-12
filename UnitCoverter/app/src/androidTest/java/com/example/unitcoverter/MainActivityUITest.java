@@ -45,4 +45,9 @@ public class MainActivityUITest {
         onView(withId(R.id.convert_btn)).perform(click());
         onView(withId(R.id.celcius_text)).check(matches(withText("ºC")));
     }
+
+    @Test
+    public void can_enter_lbs() {
+
+    }
 }

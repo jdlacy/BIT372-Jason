@@ -14,4 +14,9 @@ public class ConverterTest {
     public void fahrenheit_conversion_isCorrect() {
         assertEquals(0.0, Converter.toCelcius(32),0.01);
     }
+
+    @Test
+    public void kg_conversion_isCorrect() {
+        assertEquals(45.359237, Converter.toKiloG(100), 0.000001);
+    }
 }
