@@ -33,9 +33,10 @@ public class MainActivityUITest {
         assertEquals("com.example.unitcoverter", appContext.getPackageName());
     }
 
+    //F -> C tests
     @Test
     public void can_enter_fahrenheit() {
-        onView(withId(R.id.fahrenheit_input)).perform(typeText("45"));
+        onView(withId(R.id.user_input)).perform(typeText("45"));
         onView(withId(R.id.convert_btn)).perform(click());
         onView(withId(R.id.celcius_text)).check(matches(withText("7.22 ºC")));
     }
@@ -46,6 +47,35 @@ public class MainActivityUITest {
         onView(withId(R.id.celcius_text)).check(matches(withText("ºC")));
     }
 
+    //lbs -> kg tests
+    @Test
+    public void can_enter_lbs() {
+        onView(withId(R.id.lbs_input)).perform(typeText("100"));
+        onView(withId(R.id.convert_btn1)).perform(click());
+        onView(withId(R.id.kg_text)).check(matches(withText("45.359 kg")));
+    }
+
+    @Test
+    public void should_not_enter_empty_lbs() {
+        onView(withId(R.id.convert_btn1)).perform(click());
+        onView(withId(R.id.kg_text)).check(matches(withText("kg")));
+    }
+
+    //oz -> ml tests
+    @Test
+    public void can_enter_oz() {
+        onView(withId(R.id.oz_input)).perform(typeText("100"));
+        onView(withId(R.id.convert_btn1)).perform(click());
+        onView(withId(R.id.kg_text)).check(matches(withText("45.359 kg")));
+    }
+
+    @Test
+    public void should_not_enter_empty_lbs() {
+        onView(withId(R.id.convert_btn1)).perform(click());
+        onView(withId(R.id.kg_text)).check(matches(withText("kg")));
+    }
+
+    //mi -> km tests
     @Test
     public void can_enter_lbs() {
         onView(withId(R.id.lbs_input)).perform(typeText("100"));

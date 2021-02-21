@@ -17,8 +17,7 @@ public class MainActivity extends AppCompatActivity {
         Button fbtn = findViewById(R.id.convert_btn);
         Button kgbtn = findViewById(R.id.convert_btn1);
 
-        EditText finput = findViewById(R.id.fahrenheit_input);
-        EditText lbinput = findViewById(R.id.lbs_input);
+        EditText finput = findViewById(R.id.user_input);
         TextView ctxt = findViewById(R.id.celcius_text);
         TextView kgtext = findViewById(R.id.kg_text);
 

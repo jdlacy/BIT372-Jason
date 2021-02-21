@@ -19,4 +19,14 @@ public class ConverterTest {
     public void kg_conversion_isCorrect() {
         assertEquals(45.359, Converter.toKiloG(100), 0.003);
     }
+
+    @Test
+    public void ml_conversion_isCorrect() {
+        assertEquals(147.85, Converter.toML(5), .02);
+    }
+
+    @Test
+    public void km_conversion_isCorrect() {
+        assertEquals(19.31208, Converter.toKM(12), .02);
+    }
 }
