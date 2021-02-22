@@ -10,9 +10,12 @@ import androidx.lifecycle.ViewModel;
 @RequiresApi(api = Build.VERSION_CODES.R)
 public class UnitViewModel extends ViewModel {
 
-    public MutableLiveData<String> user_input = new MutableLiveData<>();
+    public MutableLiveData<String> user_input;
 
-    public void setUserInput() {
-        user_input.setValue(user_input.getValue());
+    public MutableLiveData<String> getUserText() {
+        if (user_input == null) {
+            user_input = new MutableLiveData<>();
+        }
+        return user_input;
     }
 }
