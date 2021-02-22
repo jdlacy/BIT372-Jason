@@ -16,11 +16,6 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.*;
 import static org.junit.Assert.*;
 
-/**
- * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 @RunWith(AndroidJUnit4.class)
 public class MainActivityUITest {
     @Rule
@@ -32,7 +27,7 @@ public class MainActivityUITest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.example.unitcoverter", appContext.getPackageName());
     }
-
+/*
     //F -> C tests
     @Test
     public void can_enter_fahrenheit() {
@@ -87,5 +82,5 @@ public class MainActivityUITest {
     public void should_not_enter_empty_lbs() {
         onView(withId(R.id.convert_btn1)).perform(click());
         onView(withId(R.id.kg_text)).check(matches(withText("kg")));
-    }
+    }*/
 }

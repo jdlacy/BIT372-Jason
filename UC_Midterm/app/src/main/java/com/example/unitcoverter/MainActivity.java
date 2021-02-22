@@ -1,11 +1,17 @@
 package com.example.unitcoverter;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.unitcoverter.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,27 +20,54 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button fbtn = findViewById(R.id.convert_btn);
-        Button kgbtn = findViewById(R.id.convert_btn1);
+        Units units = new Units("");
 
-        EditText finput = findViewById(R.id.user_input);
-        TextView ctxt = findViewById(R.id.celcius_text);
-        TextView kgtext = findViewById(R.id.kg_text);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setLifecycleOwner(this);
+        binding.setUnits(units);
 
-        kgbtn.setOnClickListener(v ->{
-            if (lbinput.getText().length() == 0)
-                return;
-            float kg = Converter.toKiloG(Float.parseFloat(lbinput.getText().toString()));
-            kgtext.setText(String.format("%.3f kg", kg));   
-        });
+     /*   UnitViewModel vm = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(UnitViewModel.class);
+        vm.*/
 
-        fbtn.setOnClickListener(v -> {
-            if (finput.getText().length() == 0)
-                return;
-            double celcius = Converter.toCelcius(Float.parseFloat(finput.getText().toString()));
-            ctxt.setText(String.format("%.2f ºC", celcius));
-        });
+        //Conversion selection creation (spinner)
+        Spinner conType = findViewById(R.id.convert_pick);
+        ArrayAdapter<CharSequence> types =
+                ArrayAdapter.createFromResource(this, R.array.units, android.R.layout.simple_spinner_item);
+        types.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        conType.setAdapter(types);
 
 
+        //Functionality for button/input
+        Button conButton = findViewById(R.id.convert_btn);
+        conButton.setOnClickListener(v -> {
+                    float data = Float.parseFloat(units.value.getValue());
+                    if (units.getUserInput().toString().length() == 0) {
+                        Toast.makeText(this, "Please enter a number first", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    switch (conType.getSelectedItemPosition()) {
+                        case 0:
+                            float cel = Converter.toCelsius(data);
+                            units.setValueText();
+
+                        case 1:
+                            float kg = Converter.toKiloG(data);
+                            return kg;
+
+                        case 2:
+                            float mL = Converter.toML(data);
+                            return mL;
+
+                        case 3:
+                            float km = Converter.toKM(data);
+                            return km;
+
+                        default:
+                            return;
+                    }
+                }
+            );
+
+        }
     }
-}

@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Unit Coverter</string>
+    <string name="app_name">Unit Converter</string>
+    <string-array name="units">
+        <item>F -> C</item>
+        <item>lbs -> kg</item>
+        <item>oz -> mL</item>
+        <item>mi -> km</item>
+    </string-array>
 </resources>
