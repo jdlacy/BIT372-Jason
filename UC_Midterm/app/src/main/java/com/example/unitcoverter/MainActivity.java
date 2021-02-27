@@ -3,11 +3,13 @@ package com.example.unitcoverter;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,7 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.unitcoverter.databinding.ActivityMainBinding;
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,22 +29,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText user_entry_box = findViewById(R.id.user_input)
+        EditText userEntryBox = findViewById(R.id.user_input);
 
         vm = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(UnitViewModel.class);
         final Observer<String> userObserver = new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 if (!(s.length() == 0))
-                    user_entry_box.setText(s);
+                    userEntryBox.setText(s);
             }
         };
 
         vm.getUserText().observe(this, userObserver);
-
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setLifecycleOwner(this);
-        binding.setUnits(units);a
 
         //Conversion selection creation (spinner)
         Spinner conType = findViewById(R.id.convert_pick);
@@ -52,29 +50,31 @@ public class MainActivity extends AppCompatActivity {
         conType.setAdapter(types);
 
 
-        //Functionality for button/input
+        //Functionality & logic for button &input
         Button conButton = findViewById(R.id.convert_btn);
         conButton.setOnClickListener(v -> {
-                    float data = Float.parseFloat(units.getValue());
-                    if (TextUtils.isEmpty(data)) {
+                    if (TextUtils.isEmpty(userEntryBox.getText())) {
                         Toast.makeText(this, "Please enter a number first", Toast.LENGTH_SHORT).show();
                         return;
                     }
 
+                    double entry = Double.parseDouble(userEntryBox.getText().toString());
                     switch (conType.getSelectedItemPosition()) {
                         case 0:
-                            data = Converter.toCelsius(data);
-                            Toast.makeText(this, String.format("New Number: %s", data), Toast.LENGTH_SHORT).show();
+                            vm.getUserText().setValue(Double.toString(Converter.toCelsius(entry)));
                             return;
 
                         case 1:
-                            float kg = Converter.toKiloG(data);
+                            vm.getUserText().setValue(Double.toString(Converter.toKiloG(entry)));
+                            return;
 
                         case 2:
-                            float mL = Converter.toML(data);
+                            vm.getUserText().setValue(Double.toString(Converter.toML(entry)));
+                            return;
 
                         case 3:
-                            float km = Converter.toKM(data);
+                            vm.getUserText().setValue(Double.toString(Converter.toKM(entry)));
+                            return;
 
                         default:
                             return;

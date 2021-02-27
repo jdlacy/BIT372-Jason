@@ -3,14 +3,14 @@ package com.example.unitcoverter;
 import androidx.lifecycle.MutableLiveData;
 
 public class Units {
-    private MutableLiveData<String> value;
+    private MutableLiveData<String> unit;
 
     public Units (String num) {
-        this.value = new MutableLiveData<>();
-        this.value.setValue(num);
+        this.unit = new MutableLiveData<>();
+        this.unit.setValue(num);
     }
 
     public String getValue() {
-        return value.getValue();
+        return unit.getValue();
     }
 }
